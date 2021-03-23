@@ -19,14 +19,22 @@ public class CustomerBusinessService {
         return null;
     }
 
-    public CustomerEntity authorize(final String authorization)
-    {
-        return null;
-    }
+
 
     public CustomerEntity logout(final String authorization)
     {
         return null;
     }
+
+    public CustomerEntity updateCustomer(final CustomerEntity customerEntity)
+    {
+        return null;
+    }
+
+    public CustomerEntity updatePassword(final CustomerEntity customerEntity)
+    {
+        return null;
+    }
+
 
 }
