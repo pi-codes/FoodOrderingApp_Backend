@@ -31,7 +31,7 @@ public class AddressController {
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/state", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public ResponseEntity<StatesList> getAllSavedAddress()
+    public ResponseEntity<StatesListResponse> getAllSavedAddress()
     {
         return null;
     }
