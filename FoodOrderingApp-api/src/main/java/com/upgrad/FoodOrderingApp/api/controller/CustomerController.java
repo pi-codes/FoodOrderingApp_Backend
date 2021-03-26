@@ -53,6 +53,7 @@ public ResponseEntity<SignupCustomerResponse> signup(@RequestBody(required = fal
     return new ResponseEntity<SignupCustomerResponse>(signupCustomerResponse, HttpStatus.CREATED);
 }
 
+@CrossOrigin
 @RequestMapping(method = RequestMethod.POST, path = "/customer/login", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 public ResponseEntity<LoginResponse> login(@RequestBody(required = false) @RequestHeader("authorization")final String authorization ) throws AuthenticationFailedException
 {
@@ -82,6 +83,7 @@ public ResponseEntity<LoginResponse> login(@RequestBody(required = false) @Reque
     return new ResponseEntity<LoginResponse>(loginResponse, headers, HttpStatus.OK);
 }
 
+@CrossOrigin
 @RequestMapping(method = RequestMethod.POST, path = "/customer/logout", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 public ResponseEntity<LogoutResponse> logout( @RequestBody(required = false) @RequestHeader("authorization")final String authorization) throws AuthorizationFailedException
 {
@@ -94,6 +96,7 @@ public ResponseEntity<LogoutResponse> logout( @RequestBody(required = false) @Re
     return new ResponseEntity<LogoutResponse>(logoutResponse, HttpStatus.OK);
 }
 
+@CrossOrigin
 @RequestMapping(method = RequestMethod.PUT, path = "/customer", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 public ResponseEntity<UpdateCustomerResponse> updateCustomer(@RequestHeader("authorization")final String authorization, final UpdateCustomerRequest updateCustomerRequest) throws AuthorizationFailedException, UpdateCustomerException
 {
@@ -117,6 +120,8 @@ public ResponseEntity<UpdateCustomerResponse> updateCustomer(@RequestHeader("aut
     return new ResponseEntity<UpdateCustomerResponse>(updateCustomerResponse, HttpStatus.OK);
 }
 
+@CrossOrigin
+@RequestMapping(method = RequestMethod.PUT,path = "/customer/password",consumes = MediaType.APPLICATION_JSON_UTF8_VALUE,produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 public ResponseEntity<UpdatePasswordResponse> updatePassword(@RequestHeader("authorization")final String authorization, final UpdatePasswordRequest updatePasswordRequest) throws AuthorizationFailedException, UpdateCustomerException
 {
     utility.isValidUpdatePasswordRequest(updatePasswordRequest.getOldPassword(), updatePasswordRequest.getNewPassword());
