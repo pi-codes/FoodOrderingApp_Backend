@@ -19,4 +19,9 @@ public class StateDao {
     {
         return null;
     }
+
+    public StateEntity getStateById(String uuid)
+    {
+        return null;
+    }
 }
