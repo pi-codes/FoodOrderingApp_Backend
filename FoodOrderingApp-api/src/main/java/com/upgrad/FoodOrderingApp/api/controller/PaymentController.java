@@ -15,7 +15,7 @@ public class PaymentController {
     @RequestMapping(method = RequestMethod.GET, path = "/payment", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public ResponseEntity<PaymentListResponse> retrievePaymentMethods()
     {
-
+        return null;
     }
 
 }
