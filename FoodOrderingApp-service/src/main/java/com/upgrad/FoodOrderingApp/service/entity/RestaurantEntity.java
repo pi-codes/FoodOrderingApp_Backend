@@ -7,6 +7,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class RestaurantEntity {
@@ -47,9 +48,11 @@ public class RestaurantEntity {
     @NotNull
     private AddressEntity address;
 
-    @OneToMany(mappedBy = "restaurantEntity", fetch = FetchType.EAGER)
-    @NotNull
-    Set<RestaurantCategoryEntity> restaurantCategoryEntitySet = new HashSet<>();
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<CategoryEntity> categories;
+
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<ItemEntity> items;
 
     public Integer getId() {
         return id;
@@ -107,6 +110,37 @@ public class RestaurantEntity {
         this.number_of_customers_rated = number_of_customers_rated;
     }
 
+    public List<CategoryEntity> getCategories() {
+        return categories;
+    }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return super.equals(obj);
+    }
+
+    @Override
+    public String toString() {
+        return super.toString();
+    }
+
+    public void setCategories(List<CategoryEntity> categories) {
+        this.categories = categories;
+    }
+
+    public List<ItemEntity> getItems() {
+        return items;
+    }
+
+    public void setItems(List<ItemEntity> items) {
+        this.items = items;
+    }
+
     public AddressEntity getAddress() {
         return address;
     }
@@ -115,11 +149,5 @@ public class RestaurantEntity {
         this.address = address;
     }
 
-    public Set<RestaurantCategoryEntity> getRestaurantCategoryEntitySet() {
-        return restaurantCategoryEntitySet;
-    }
 
-    public void setRestaurantCategoryEntitySet(Set<RestaurantCategoryEntity> restaurantCategoryEntitySet) {
-        this.restaurantCategoryEntitySet = restaurantCategoryEntitySet;
-    }
 }
