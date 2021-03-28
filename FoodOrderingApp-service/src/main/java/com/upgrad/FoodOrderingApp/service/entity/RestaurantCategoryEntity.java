@@ -3,10 +3,19 @@ package com.upgrad.FoodOrderingApp.service.entity;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.io.Serializable;
+
+//This Class represents the RestaurantCategory table in the DB
 
 @Entity
 @Table(name = "restaurant_category")
-public class RestaurantCategoryEntity {
+@NamedQueries({
+
+        @NamedQuery(name = "getCategoriesByRestaurant",query = "SELECT r FROM RestaurantCategoryEntity r WHERE r.restaurantEntity= :restaurant ORDER BY r.categoryEntity.categoryName ASC "),
+        @NamedQuery(name = "getRestaurantsByCategory",query = "SELECT r FROM RestaurantCategoryEntity r WHERE r.categoryEntity = :category ORDER BY r.restaurantEntity.customerRating DESC "),
+})
+
+public class RestaurantCategoryEntity implements Serializable {
 
     @Id
     @Column(name = "id")
