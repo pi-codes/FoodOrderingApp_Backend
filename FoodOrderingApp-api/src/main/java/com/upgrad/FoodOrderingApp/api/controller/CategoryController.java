@@ -76,6 +76,4 @@ public class CategoryController {
                 .itemList(itemLists);
         return new ResponseEntity<CategoryDetailsResponse>(categoryDetailsResponse,HttpStatus.OK);
     }
-    }
-
 }
