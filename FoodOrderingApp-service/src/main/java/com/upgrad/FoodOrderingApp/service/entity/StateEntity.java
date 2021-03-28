@@ -6,8 +6,11 @@ import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "STATE")
+@NamedQueries({
+        @NamedQuery(name = "getAllStates",query = "SELECT s from StateEntity s"),
+        @NamedQuery(name = "getStateByUuid", query = "SELECT s from StateEntity s where s.uuid = :uuid")
+})
 public class StateEntity {
-
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.AUTO)
