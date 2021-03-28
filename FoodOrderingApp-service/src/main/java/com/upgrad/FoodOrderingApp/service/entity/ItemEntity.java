@@ -30,6 +30,15 @@ public class ItemEntity {
     @ManyToMany(mappedBy = "item")
     private List<CategoryEntity> categories;
 
+    @Column(name = "price")
+    @NotNull
+    private Integer price;
+
+    @Column(name = "type")
+    @Size(max = 10)
+    @NotNull
+    private String itemType;
+
 
     public Integer getId() {
         return id;
@@ -66,6 +75,7 @@ public class ItemEntity {
         return super.toString();
     }
 
+
     public List<RestaurantEntity> getRestaurants() {
         return restaurants;
     }
@@ -84,5 +94,21 @@ public class ItemEntity {
 
     public void setItemName(String itemName) {
         this.itemName = itemName;
+    }
+
+    public Integer getPrice() {
+        return price;
+    }
+
+    public void setPrice(Integer price) {
+        this.price = price;
+    }
+
+    public String getItemType() {
+        return itemType;
+    }
+
+    public void setItemType(String itemType) {
+        this.itemType = itemType;
     }
 }
