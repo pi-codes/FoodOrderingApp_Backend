@@ -13,7 +13,7 @@ import com.upgrad.FoodOrderingApp.service.common.ItemType;
 @Entity
 @Table(name = "ITEM")
 @NamedQueries({
-        @NamedQuery(name = "getItemByUUID",query = "SELECT i FROM ItemEntity i WHERE i.uuid = :uuid"),
+        @NamedQuery(name = "getItemById",query = "SELECT i FROM ItemEntity i WHERE i.uuid = :uuid"),
 })
 public class ItemEntity implements Serializable {
 

@@ -25,24 +25,18 @@ import java.util.UUID;
 public class ItemController {
 
     @Autowired
-    ItemBusinessService itemBusinessService; // Handles all the Service Related to Item.
+    ItemBusinessService itemBusinessService;
 
     @Autowired
-    RestaurantBusinessService restaurantBusinessService; // Handles all the Service Related to Restaurant.
+    RestaurantBusinessService restaurantBusinessService;
 
-
-    /* The method handles get Top Five Items By Popularity request & takes restaurant_id as the path variable
-       & produces response in ItemListResponse and returns list of 5 items sold by restaurant on basis of popularity  with details from the db. If error returns error code and error message.
-       */
     @RequestMapping(method = RequestMethod.GET, path = "/item/restaurant/{restaurant_id}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public ResponseEntity<ItemListResponse> getItemByPopularity(@PathVariable("restaurant_id")final String restaurant_id)throws RestaurantNotFoundException {
-        //Calls restaurantByUUID method of restaurantService to get the restaurant entity.
+
         RestaurantEntity restaurantEntity = restaurantBusinessService.restaurantByuuid(restaurant_id);
 
-        //Calls getItemsByPopularity method of itemService to get the ItemEntity.
         List<ItemEntity> itemEntities = itemBusinessService.getItemByPopularity(restaurantEntity);
 
-        //Creating the ItemListResponse details as required.
         ItemListResponse itemListResponse = new ItemListResponse();
         itemEntities.forEach(itemEntity -> {
             ItemList itemList = new ItemList()
