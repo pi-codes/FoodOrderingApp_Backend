@@ -29,6 +29,7 @@ public class CategoryController {
     @Autowired
     CategoryBusinessService categoryBusinessService;
 
+    @CrossOrigin
     @RequestMapping(method = RequestMethod.GET, path = "/category", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public ResponseEntity<CategoriesListResponse> getAllCategoriesOrderedByName()
     {
@@ -50,6 +51,7 @@ public class CategoryController {
         }
     }
 
+    @CrossOrigin
     @RequestMapping(method = RequestMethod.GET, path = "/category/{category_id}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public ResponseEntity<CategoryDetailsResponse> getAllCategoryById(@PathVariable("category_id")final String category_id) throws CategoryNotFoundException
     {
@@ -74,6 +76,4 @@ public class CategoryController {
                 .itemList(itemLists);
         return new ResponseEntity<CategoryDetailsResponse>(categoryDetailsResponse,HttpStatus.OK);
     }
-    }
-
 }
